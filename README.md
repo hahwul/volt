@@ -1,4 +1,4 @@
-# volt
+# ⚡ volt
 Golang library for make pentest tools
 
 [![CI](https://github.com/hahwul/volt/actions/workflows/go.yml/badge.svg)](https://github.com/hahwul/volt/actions/workflows/go.yml)
