@@ -1,7 +1,7 @@
 package token
 
 import (
-	"github.com/dgrijalva/jwt-go"
+	"github.com/golang-jwt/jwt"
 )
 
 // JWTencode is JWT interface for encode
