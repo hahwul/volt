@@ -26,7 +26,7 @@ func GetFiles(path string) ([]string, error) {
 		}
 		fileList = append(fileList, filePath)
 		if fileInfo.IsDir() {
-			readDir(filePath)
+			GetFiles(filePath)
 		}
 	}
 	return fileList, nil
