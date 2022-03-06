@@ -1,33 +1,23 @@
 package file
 
 import (
-	"fmt"
 	"os"
+	"path/filepath"
 )
 
 func GetFiles(path string) ([]string, error) {
 	var fileList []string
-	file, err := os.Open(path)
+	err := filepath.Walk(path, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+		if !info.IsDir() {
+			fileList = append(fileList, path)
+		}
+		return nil
+	})
 	if err != nil {
 		return fileList, err
-	}
-	defer file.Close()
-	names, _ := file.Readdirnames(0)
-	for _, name := range names {
-		filePath := fmt.Sprintf("%v/%v", path, name)
-		file, err := os.Open(filePath)
-		if err != nil {
-			return fileList, err
-		}
-		defer file.Close()
-		fileInfo, err := file.Stat()
-		if err != nil {
-			return fileList, err
-		}
-		fileList = append(fileList, filePath)
-		if fileInfo.IsDir() {
-			GetFiles(filePath)
-		}
 	}
 	return fileList, nil
 }
