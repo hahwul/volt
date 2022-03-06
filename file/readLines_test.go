@@ -4,9 +4,9 @@ import (
 	"testing"
 )
 
-func TestGetFiles(t *testing.T) {
+func TestReadLinesOrLiteral(t *testing.T) {
 	type args struct {
-		path string
+		arg string
 	}
 	tests := []struct {
 		name    string
@@ -16,24 +16,23 @@ func TestGetFiles(t *testing.T) {
 		{
 			name: "success",
 			args: args{
-				path: ".",
+				arg: "",
 			},
 			wantErr: false,
 		},
 		{
 			name: "fail",
 			args: args{
-				path: "@$&*^#*",
+				arg: "ASFASFASFASFASFSDFSDFSDFHSD(F*H",
 			},
-			wantErr: true,
+			wantErr: false,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := GetFiles(tt.args.path)
+			_, err := ReadLinesOrLiteral(tt.args.arg)
 			if (err != nil) != tt.wantErr {
-				t.Errorf("GetFiles() error = %v, wantErr %v", err, tt.wantErr)
-				t.Errorf("%s", got)
+				t.Errorf("ReadLinesOrLiteral() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
 		})
