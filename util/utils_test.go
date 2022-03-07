@@ -76,3 +76,31 @@ func TestUniqueIntSlice(t *testing.T) {
 		})
 	}
 }
+
+func TestRemoveIndex(t *testing.T) {
+	type args struct {
+		s     []string
+		index int
+	}
+	tests := []struct {
+		name string
+		args args
+		want []string
+	}{
+		{
+			name: "test1",
+			args: args{
+				s:     []string{"a", "b", "c", "d", "e", "f"},
+				index: 3,
+			},
+			want: []string{"a", "b", "c", "e", "f"},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := RemoveIndex(tt.args.s, tt.args.index); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("RemoveIndex() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
