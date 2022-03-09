@@ -17,7 +17,7 @@ type Entry struct {
 type Request struct {
 	Method      string        `json:"method"`
 	URL         string        `json:"url"`
-	QueryString []queryString `json:"queryString"`
+	QueryString []QueryString `json:"queryString"`
 	PostData    PostData      `json:"postData"`
 }
 
