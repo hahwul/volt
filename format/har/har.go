@@ -21,7 +21,7 @@ type Request struct {
 	PostData    PostData      `json:"postData"`
 }
 
-type queryString struct {
+type QueryString struct {
 	Name  string `json:"name"`
 	Value string `json:"value"`
 }
