@@ -1,6 +1,6 @@
 module github.com/hahwul/volt
 
-go 1.16
+go 1.24
 
 require (
 	github.com/antonfisher/nested-logrus-formatter v1.3.1
